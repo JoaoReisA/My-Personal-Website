@@ -20,27 +20,50 @@ class _HomePageState extends State<HomePage> {
         elevation: 0,
         title: Text.rich(TextSpan(
           text: Strings.firstName,
-          style: GoogleFonts.dosis(color: Colors.purple),
+          style: GoogleFonts.montserrat(color: Colors.purple),
           children: [
             TextSpan(
                 text: Strings.middleName,
-                style: GoogleFonts.dosis(color: Colors.purple)
+                style: GoogleFonts.montserrat(color: Colors.purple)
                     .copyWith(fontWeight: FontWeight.bold))
           ],
         )),
         actions: [
-          TextButton(onPressed: () {}, child: const Text("Home")),
-          TextButton(onPressed: () {}, child: const Text("Projects")),
-          TextButton(onPressed: () {}, child: const Text("About me")),
+          TextButton(
+              onPressed: () {},
+              child: Text(
+                Strings.homeButton,
+                style: GoogleFonts.montserrat(),
+              )),
+          TextButton(
+              onPressed: () {},
+              child: Text(
+                Strings.projectsButton,
+                style: GoogleFonts.montserrat(),
+              )),
+          TextButton(
+              onPressed: () {},
+              child: Text(
+                Strings.aboutMeButton,
+                style: GoogleFonts.montserrat(),
+              )),
         ],
       ),
       body: Center(
           child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: const [
+        children: [
           AvatarWidget(),
-          Text(Strings.introduction),
-          Text(Strings.whatIdo),
+          Text(
+            Strings.introduction,
+            style: GoogleFonts.montserrat()
+                .copyWith(fontWeight: FontWeight.bold, fontSize: 65),
+          ),
+          Text(
+            Strings.whatIdo,
+            style: GoogleFonts.montserrat()
+                .copyWith(color: Colors.grey[700], fontSize: 20),
+          ),
         ],
       )),
     );
