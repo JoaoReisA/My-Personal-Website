@@ -6,4 +6,6 @@ class Strings {
   static const homeButton = "Home";
   static const projectsButton = "Projects";
   static const aboutMeButton = "About Me";
+  static const avatar = "Avatar";
+  static const background = "Background";
 }

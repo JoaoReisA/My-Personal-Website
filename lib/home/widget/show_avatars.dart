@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_personal_website/config/images_path.dart';
+import 'package:my_personal_website/config/strings.dart';
+import 'package:my_personal_website/home/widget/change_avatar_configs.dart';
 
 class AvatarWidget extends StatefulWidget {
   AvatarWidget({Key? key}) : super(key: key);
@@ -55,7 +57,7 @@ class _AvatarWidgetState extends State<AvatarWidget> {
               maintainState: true,
               visible: hoverIsOn,
               child: IconButton(
-                color: Colors.green,
+                color: Colors.deepPurple,
                 icon: const Icon(Icons.drag_indicator),
                 onPressed: () {
                   setState(() {
@@ -64,40 +66,8 @@ class _AvatarWidgetState extends State<AvatarWidget> {
                   });
                 },
               )),
-          Visibility(
-            visible: showSelectionBanner,
-            child: Container(
-              height: 150,
-              width: 120,
-              decoration: BoxDecoration(
-                boxShadow: const [
-                  BoxShadow(color: Colors.black54, offset: Offset(-0.5, 1))
-                ],
-                color: Colors.white,
-                borderRadius: BorderRadiusDirectional.circular(8),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  children: [
-                    Row(
-                      children: const [
-                        Text("Avatar"),
-                        SizedBox(
-                          width: 20,
-                        ),
-                        Text("Botao")
-                      ],
-                    ),
-                    const Divider(),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    const Text("Background")
-                  ],
-                ),
-              ),
-            ),
+          ChangeAvatarConfigs(
+            showSelectionBanner: showSelectionBanner,
           )
         ],
       ),
