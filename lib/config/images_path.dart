@@ -9,12 +9,12 @@ class ImagesPath {
   static const sweatingAvatar = "assets/images/meditating.png";
 
   static get imagesList => [
-        boomAvatar,
         blinkAvatar,
-        cloudsAvatar,
         peaceAvatar,
+        boomAvatar,
         likeAvatar,
         laptopAvatar,
+        cloudsAvatar,
         meditatingAvatar,
         sweatingAvatar,
       ];

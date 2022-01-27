@@ -14,6 +14,7 @@ class _AvatarWidgetState extends State<AvatarWidget> {
   bool hoverIsOn = false;
   bool showSelectionBanner = false;
   bool hoverIsEnabled = true;
+  PageController pageController = PageController();
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -55,10 +56,16 @@ class _AvatarWidgetState extends State<AvatarWidget> {
                       ], begin: Alignment.bottomLeft),
                       borderRadius: BorderRadiusDirectional.circular(16)),
                   child: Center(
-                    child: Image.asset(
-                      ImagesPath.blinkAvatar,
-                      width: 75,
-                    ),
+                    child: PageView.builder(
+                        controller: pageController,
+                        itemCount: ImagesPath.imagesList.length,
+                        itemBuilder: (context, index) {
+                          final list = ImagesPath.imagesList;
+                          return Image.asset(
+                            list[index],
+                            width: 60,
+                          );
+                        }),
                   ),
                 ),
               ),
@@ -82,6 +89,16 @@ class _AvatarWidgetState extends State<AvatarWidget> {
             ),
             ChangeAvatarConfigs(
               showSelectionBanner: showSelectionBanner,
+              onClickBack: () {
+                pageController.previousPage(
+                    duration: const Duration(milliseconds: 100),
+                    curve: Curves.easeOut);
+              },
+              onClickFoward: () {
+                pageController.nextPage(
+                    duration: const Duration(milliseconds: 100),
+                    curve: Curves.easeIn);
+              },
             )
           ],
         ),
