@@ -41,6 +41,9 @@ class ChangeAvatarConfigs extends StatelessWidget {
           ),
         ),
       ),
+      replacement: Container(
+        width: 120,
+      ),
     );
   }
 }

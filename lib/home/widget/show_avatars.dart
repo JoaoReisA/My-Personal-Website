@@ -13,63 +13,78 @@ class AvatarWidget extends StatefulWidget {
 class _AvatarWidgetState extends State<AvatarWidget> {
   bool hoverIsOn = false;
   bool showSelectionBanner = false;
+  bool hoverIsEnabled = true;
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      hoverColor: Colors.transparent,
+      focusColor: Colors.transparent,
+      splashColor: Colors.transparent,
+      highlightColor: Colors.transparent,
       onTap: () {},
-      onHover: (value) {
-        setState(() {
-          hoverIsOn = value;
-        });
-      },
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            width: 150,
-            height: 150,
-            decoration: BoxDecoration(
-                boxShadow: const [
-                  BoxShadow(color: Colors.black54, offset: Offset(-0.5, 1))
-                ],
-                color: Colors.white,
-                borderRadius: BorderRadiusDirectional.circular(16)),
-            child: Padding(
-              padding: const EdgeInsets.all(16),
-              child: Container(
-                decoration: BoxDecoration(
-                    gradient: const LinearGradient(colors: [
-                      Colors.purple,
-                      Colors.green,
-                    ], begin: Alignment.bottomLeft),
-                    borderRadius: BorderRadiusDirectional.circular(16)),
-                child: Center(
-                  child: Image.asset(
-                    ImagesPath.blinkAvatar,
-                    width: 75,
+      onHover: hoverIsEnabled
+          ? (value) {
+              setState(() {
+                hoverIsOn = value;
+              });
+            }
+          : null,
+      child: Padding(
+        padding: const EdgeInsets.only(left: 160),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              width: 150,
+              height: 150,
+              decoration: BoxDecoration(
+                  boxShadow: const [
+                    BoxShadow(color: Colors.black54, offset: Offset(-0.5, 1))
+                  ],
+                  color: Colors.white,
+                  borderRadius: BorderRadiusDirectional.circular(16)),
+              child: Padding(
+                padding: const EdgeInsets.all(16),
+                child: Container(
+                  decoration: BoxDecoration(
+                      gradient: const LinearGradient(colors: [
+                        Colors.purple,
+                        Colors.green,
+                      ], begin: Alignment.bottomLeft),
+                      borderRadius: BorderRadiusDirectional.circular(16)),
+                  child: Center(
+                    child: Image.asset(
+                      ImagesPath.blinkAvatar,
+                      width: 75,
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-          Visibility(
-              maintainState: true,
+            Visibility(
               visible: hoverIsOn,
               child: IconButton(
+                splashColor: Colors.purple,
                 color: Colors.deepPurple,
                 icon: const Icon(Icons.drag_indicator),
                 onPressed: () {
                   setState(() {
                     showSelectionBanner = !showSelectionBanner;
-                    hoverIsOn = true;
+                    hoverIsEnabled = !hoverIsEnabled;
                   });
                 },
-              )),
-          ChangeAvatarConfigs(
-            showSelectionBanner: showSelectionBanner,
-          )
-        ],
+              ),
+              replacement: Container(
+                width: 40,
+              ),
+            ),
+            ChangeAvatarConfigs(
+              showSelectionBanner: showSelectionBanner,
+            )
+          ],
+        ),
       ),
     );
   }
