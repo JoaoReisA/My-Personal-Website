@@ -15,6 +15,10 @@ class _AvatarWidgetState extends State<AvatarWidget> {
   bool showSelectionBanner = false;
   bool hoverIsEnabled = true;
   PageController pageController = PageController();
+  LinearGradient gradient = LinearGradient(colors: [
+    Colors.green,
+    Colors.purple,
+  ], begin: Alignment.bottomLeft);
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -50,10 +54,7 @@ class _AvatarWidgetState extends State<AvatarWidget> {
                 padding: const EdgeInsets.all(16),
                 child: Container(
                   decoration: BoxDecoration(
-                      gradient: const LinearGradient(colors: [
-                        Colors.purple,
-                        Colors.green,
-                      ], begin: Alignment.bottomLeft),
+                      gradient: gradient,
                       borderRadius: BorderRadiusDirectional.circular(16)),
                   child: Center(
                     child: PageView.builder(
@@ -63,7 +64,6 @@ class _AvatarWidgetState extends State<AvatarWidget> {
                           final list = ImagesPath.imagesList;
                           return Image.asset(
                             list[index],
-                            width: 60,
                           );
                         }),
                   ),
@@ -98,6 +98,12 @@ class _AvatarWidgetState extends State<AvatarWidget> {
                 pageController.nextPage(
                     duration: const Duration(milliseconds: 100),
                     curve: Curves.easeIn);
+              },
+              gradient: gradient,
+              onClickColor: (selectedGradient) {
+                setState(() {
+                  gradient = selectedGradient;
+                });
               },
             )
           ],

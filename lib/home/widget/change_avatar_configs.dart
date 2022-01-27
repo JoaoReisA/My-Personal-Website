@@ -2,15 +2,46 @@ import 'package:flutter/material.dart';
 import 'package:my_personal_website/config/strings.dart';
 
 class ChangeAvatarConfigs extends StatelessWidget {
-  const ChangeAvatarConfigs(
-      {Key? key,
-      required this.showSelectionBanner,
-      required this.onClickBack,
-      required this.onClickFoward})
-      : super(key: key);
+  ChangeAvatarConfigs({
+    Key? key,
+    required this.showSelectionBanner,
+    required this.onClickBack,
+    required this.onClickFoward,
+    required this.gradient,
+    required this.onClickColor,
+  }) : super(key: key);
   final bool showSelectionBanner;
   final VoidCallback onClickBack;
   final VoidCallback onClickFoward;
+  LinearGradient gradient;
+  final Function(LinearGradient) onClickColor;
+  final List listOfGradients = const [
+    LinearGradient(colors: [
+      Colors.blue,
+      Colors.purple,
+    ], begin: Alignment.bottomLeft),
+    LinearGradient(colors: [
+      Colors.pink,
+      Colors.purple,
+    ], begin: Alignment.bottomLeft),
+    LinearGradient(colors: [
+      Colors.yellow,
+      Colors.purple,
+    ], begin: Alignment.bottomLeft),
+    LinearGradient(colors: [
+      Colors.green,
+      Colors.purple,
+    ], begin: Alignment.bottomLeft),
+    LinearGradient(colors: [
+      Colors.brown,
+      Colors.purple,
+    ], begin: Alignment.bottomLeft),
+    LinearGradient(colors: [
+      Colors.grey,
+      Colors.purple,
+    ], begin: Alignment.bottomLeft),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Visibility(
@@ -59,7 +90,36 @@ class ChangeAvatarConfigs extends StatelessWidget {
               const SizedBox(
                 height: 10,
               ),
-              const Text(Strings.background)
+              const Text(Strings.background),
+              const SizedBox(
+                height: 10,
+              ),
+              SizedBox(
+                width: 90,
+                child: GridView.builder(
+                  itemCount: 6,
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 3,
+                    mainAxisSpacing: 5,
+                    crossAxisSpacing: 5,
+                  ),
+                  itemBuilder: (context, index) {
+                    return InkWell(
+                        onTap: () {
+                          // gradient = listOfGradients[index];
+                          onClickColor(listOfGradients[index]);
+                        },
+                        child: Container(
+                          width: 60,
+                          decoration: BoxDecoration(
+                            gradient: listOfGradients[index],
+                          ),
+                        ));
+                  },
+                ),
+              )
             ],
           ),
         ),
