@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:my_personal_website/config/images_path.dart';
-import 'package:my_personal_website/config/strings.dart';
 import 'package:my_personal_website/home/widget/change_avatar_configs.dart';
 
 class AvatarWidget extends StatefulWidget {
@@ -15,10 +14,8 @@ class _AvatarWidgetState extends State<AvatarWidget> {
   bool showSelectionBanner = false;
   bool hoverIsEnabled = true;
   PageController pageController = PageController();
-  LinearGradient gradient = LinearGradient(colors: [
-    Colors.green,
-    Colors.purple,
-  ], begin: Alignment.bottomLeft);
+
+  Color color = Colors.green;
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -54,7 +51,10 @@ class _AvatarWidgetState extends State<AvatarWidget> {
                 padding: const EdgeInsets.all(16),
                 child: Container(
                   decoration: BoxDecoration(
-                      gradient: gradient,
+                      gradient: LinearGradient(colors: [
+                        color,
+                        Colors.purple,
+                      ], begin: Alignment.bottomLeft),
                       borderRadius: BorderRadiusDirectional.circular(16)),
                   child: Center(
                     child: PageView.builder(
@@ -99,12 +99,12 @@ class _AvatarWidgetState extends State<AvatarWidget> {
                     duration: const Duration(milliseconds: 100),
                     curve: Curves.easeIn);
               },
-              gradient: gradient,
-              onClickColor: (selectedGradient) {
+              onClickColor: (selectedColor) {
                 setState(() {
-                  gradient = selectedGradient;
+                  color = selectedColor;
                 });
               },
+              color: color,
             )
           ],
         ),
