@@ -39,25 +39,28 @@ class _BasePageState extends State<BasePage> {
           ],
         )),
         actions: [
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.dark_mode_outlined),
+            color: Colors.purple,
+          ),
           TextButton(
               onPressed: () => widget.controller.pushRoute(PagesEnum.homePage),
-              child: Text(
-                Strings.homeButton,
-                style: GoogleFonts.montserrat(),
-              )),
+              child: Text(Strings.homeButton,
+                  style: GoogleFonts.montserrat(color: Colors.purple))),
           TextButton(
               onPressed: () =>
                   widget.controller.pushRoute(PagesEnum.projectsPage),
               child: Text(
                 Strings.projectsButton,
-                style: GoogleFonts.montserrat(),
+                style: GoogleFonts.montserrat(color: Colors.purple),
               )),
           TextButton(
               onPressed: () =>
                   widget.controller.pushRoute(PagesEnum.aboutMePage),
               child: Text(
                 Strings.aboutMeButton,
-                style: GoogleFonts.montserrat(),
+                style: GoogleFonts.montserrat(color: Colors.purple),
               )),
         ],
       ),
