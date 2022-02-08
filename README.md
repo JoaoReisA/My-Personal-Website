@@ -2,4 +2,4 @@
 
 Current working on in a portifolio website made on Flutter Web!
 
-![image](https://user-images.githubusercontent.com/62678763/152708178-7d8d1232-68e7-4696-8ad8-a73bd2b16bb6.png)
+![gif](https://github.com/JoaoReisA/My-Personal-Website/blob/main/assets/images/personal-site.gif)
