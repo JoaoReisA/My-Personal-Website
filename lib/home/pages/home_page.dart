@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_personal_website/config/images_path.dart';
 import 'package:my_personal_website/config/strings.dart';
 import 'package:my_personal_website/home/widget/show_avatars.dart';
+import 'dart:html' as html;
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -66,6 +68,29 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       )),
+      persistentFooterButtons: [...iconsList],
     );
   }
+}
+
+List<Widget> get iconsList => [
+      InkWell(
+        onTap: () => htmlOpenLink(Strings.githubUrl),
+        child:
+            SvgPicture.asset(ImagesPath.githubLogo, semanticsLabel: "GitHub"),
+      ),
+      InkWell(
+        onTap: () => htmlOpenLink(Strings.linkedinUrl),
+        child: SvgPicture.asset(ImagesPath.linkedinLogo,
+            semanticsLabel: "LinkedIn"),
+      ),
+      InkWell(
+        onTap: () => htmlOpenLink(Strings.instagramUrl),
+        child: SvgPicture.asset(ImagesPath.instagramLogo,
+            semanticsLabel: "Instagram"),
+      ),
+    ];
+
+void htmlOpenLink(String url) {
+  html.window.open(url, '_blank');
 }
