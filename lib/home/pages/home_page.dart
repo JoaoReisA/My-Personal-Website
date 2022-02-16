@@ -76,18 +76,27 @@ class _HomePageState extends State<HomePage> {
 List<Widget> get iconsList => [
       InkWell(
         onTap: () => htmlOpenLink(Strings.githubUrl),
-        child:
-            SvgPicture.asset(ImagesPath.githubLogo, semanticsLabel: "GitHub"),
+        child: SvgPicture.asset(
+          ImagesPath.githubLogo,
+          semanticsLabel: "GitHub",
+          color: Colors.deepPurple,
+        ),
       ),
       InkWell(
         onTap: () => htmlOpenLink(Strings.linkedinUrl),
-        child: SvgPicture.asset(ImagesPath.linkedinLogo,
-            semanticsLabel: "LinkedIn"),
+        child: SvgPicture.asset(
+          ImagesPath.linkedinLogo,
+          semanticsLabel: "LinkedIn",
+          color: Colors.deepPurple,
+        ),
       ),
       InkWell(
         onTap: () => htmlOpenLink(Strings.instagramUrl),
-        child: SvgPicture.asset(ImagesPath.instagramLogo,
-            semanticsLabel: "Instagram"),
+        child: SvgPicture.asset(
+          ImagesPath.instagramLogo,
+          semanticsLabel: "Instagram",
+          color: Colors.deepPurple,
+        ),
       ),
     ];
 
