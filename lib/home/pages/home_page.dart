@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_personal_website/config/images_path.dart';
 import 'package:my_personal_website/config/strings.dart';
+import 'package:my_personal_website/config/text_styles.dart';
+import 'package:my_personal_website/home/pages/home_page_controller.dart';
 import 'package:my_personal_website/home/widget/show_avatars.dart';
 
 class HomePage extends StatefulWidget {
@@ -12,6 +15,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final controller = HomePageController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,12 +24,11 @@ class _HomePageState extends State<HomePage> {
         elevation: 0,
         title: Text.rich(TextSpan(
           text: Strings.firstName,
-          style: GoogleFonts.montserrat(color: Colors.purple),
+          style: TextStyles.standardPurpleStyle,
           children: [
             TextSpan(
                 text: Strings.middleName,
-                style: GoogleFonts.montserrat(color: Colors.purple)
-                    .copyWith(fontWeight: FontWeight.bold))
+                style: TextStyles.standardPurpleBoldStyle)
           ],
         )),
         actions: [
@@ -33,19 +36,19 @@ class _HomePageState extends State<HomePage> {
               onPressed: () {},
               child: Text(
                 Strings.homeButton,
-                style: GoogleFonts.montserrat(),
+                style: TextStyles.textButtonStyles,
               )),
           TextButton(
               onPressed: () {},
               child: Text(
                 Strings.projectsButton,
-                style: GoogleFonts.montserrat(),
+                style: TextStyles.textButtonStyles,
               )),
           TextButton(
               onPressed: () {},
               child: Text(
                 Strings.aboutMeButton,
-                style: GoogleFonts.montserrat(),
+                style: TextStyles.textButtonStyles,
               )),
         ],
       ),
@@ -56,16 +59,64 @@ class _HomePageState extends State<HomePage> {
           AvatarWidget(),
           Text(
             Strings.introduction,
-            style: GoogleFonts.montserrat()
-                .copyWith(fontWeight: FontWeight.bold, fontSize: 65),
+            style: TextStyles.titleTextStyle,
           ),
           Text(
             Strings.whatIdo,
-            style: GoogleFonts.montserrat()
-                .copyWith(color: Colors.grey[700], fontSize: 20),
+            style: TextStyles.subtitleTextStyle,
           ),
         ],
       )),
+      persistentFooterButtons: [...iconsList],
     );
   }
+
+  List<Widget> get iconsList => [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              children: [
+                InkWell(
+                  onTap: () => controller.htmlOpenLink(Strings.githubUrl),
+                  child: SvgPicture.asset(
+                    ImagesPath.githubLogo,
+                    semanticsLabel: "GitHub",
+                    color: Colors.deepPurple,
+                  ),
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                InkWell(
+                  onTap: () => controller.htmlOpenLink(Strings.linkedinUrl),
+                  child: SvgPicture.asset(
+                    ImagesPath.linkedinLogo,
+                    semanticsLabel: "LinkedIn",
+                    color: Colors.deepPurple,
+                  ),
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                InkWell(
+                  onTap: () => controller.htmlOpenLink(Strings.instagramUrl),
+                  child: SvgPicture.asset(
+                    ImagesPath.instagramLogo,
+                    semanticsLabel: "Instagram",
+                    color: Colors.deepPurple,
+                  ),
+                ),
+              ],
+            ),
+            Text(
+              Strings.footerText,
+              style: GoogleFonts.montserrat().copyWith(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 12,
+                  color: Colors.deepPurple),
+            ),
+          ],
+        ),
+      ];
 }
