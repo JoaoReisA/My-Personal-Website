@@ -53,7 +53,7 @@ class _AvatarWidgetState extends State<AvatarWidget> {
                   decoration: BoxDecoration(
                       gradient: LinearGradient(colors: [
                         color,
-                        Colors.purple,
+                        Colors.deepPurple,
                       ], begin: Alignment.bottomLeft),
                       borderRadius: BorderRadiusDirectional.circular(16)),
                   child: Center(

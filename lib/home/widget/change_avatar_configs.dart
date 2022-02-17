@@ -104,7 +104,7 @@ class _ChangeAvatarConfigsState extends State<ChangeAvatarConfigs> {
                     child: Container(
                       decoration: BoxDecoration(
                           gradient: LinearGradient(
-                              colors: [widget.color, Colors.purple],
+                              colors: [widget.color, Colors.deepPurple],
                               begin: Alignment.bottomLeft)),
                     ),
                   )),
