@@ -75,7 +75,7 @@ class _ChangeAvatarConfigsState extends State<ChangeAvatarConfigs> {
               ),
               SizedBox(
                   width: 90,
-                  height: 60,
+                  height: 50,
                   child: InkWell(
                     onTap: () {
                       showDialog(
