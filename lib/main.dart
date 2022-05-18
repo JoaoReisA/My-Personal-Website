@@ -23,6 +23,7 @@ class _AppState extends State<App> {
       title: 'JoaoReisA',
       theme: ThemeData(
         useMaterial3: true,
+        backgroundColor: Colors.white,
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
       home: HomePage(
@@ -32,7 +33,9 @@ class _AppState extends State<App> {
           },
         ),
       ),
-      darkTheme: isDarkMode ? ThemeData.dark() : null,
+      darkTheme: isDarkMode
+          ? ThemeData.dark().copyWith(backgroundColor: Colors.grey[800])
+          : null,
     );
   }
 }

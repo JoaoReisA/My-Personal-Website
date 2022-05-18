@@ -3,7 +3,7 @@ import 'package:my_personal_website/config/images_path.dart';
 import 'package:my_personal_website/home/widget/change_avatar_configs.dart';
 
 class AvatarWidget extends StatefulWidget {
-  AvatarWidget({Key? key}) : super(key: key);
+  const AvatarWidget({Key? key}) : super(key: key);
 
   @override
   State<AvatarWidget> createState() => _AvatarWidgetState();
@@ -45,7 +45,7 @@ class _AvatarWidgetState extends State<AvatarWidget> {
                   boxShadow: const [
                     BoxShadow(color: Colors.black54, offset: Offset(-0.5, 1))
                   ],
-                  color: Colors.white,
+                  color: Theme.of(context).backgroundColor,
                   borderRadius: BorderRadiusDirectional.circular(16)),
               child: Padding(
                 padding: const EdgeInsets.all(16),
