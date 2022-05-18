@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:my_personal_website/config/page/base_page.dart';
+import 'package:my_personal_website/home/pages/home_page.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const App());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class App extends StatefulWidget {
+  const App({Key? key}) : super(key: key);
+
+  @override
+  State<App> createState() => _AppState();
+}
+
+class _AppState extends State<App> {
+  bool isDarkMode = true;
 
   // This widget is the root of your application.
   @override
@@ -16,10 +23,16 @@ class MyApp extends StatelessWidget {
       title: 'JoaoReisA',
       theme: ThemeData(
         useMaterial3: true,
-        primarySwatch: Colors.deepPurple,
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: BasePage(),
-      darkTheme: ThemeData.dark(),
+      home: HomePage(
+        changeDarkMode: () => setState(
+          () {
+            isDarkMode = !isDarkMode;
+          },
+        ),
+      ),
+      darkTheme: isDarkMode ? ThemeData.dark() : null,
     );
   }
 }

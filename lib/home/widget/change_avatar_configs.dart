@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:my_personal_website/config/strings.dart';
 import 'package:my_personal_website/home/widget/color_picker.dart';
 
+import '../../config/text_styles.dart';
+
 class ChangeAvatarConfigs extends StatefulWidget {
   ChangeAvatarConfigs({
     Key? key,
@@ -42,7 +44,10 @@ class _ChangeAvatarConfigsState extends State<ChangeAvatarConfigs> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  const Text(Strings.avatar),
+                  Text(
+                    Strings.avatar,
+                    style: TextStyles.textButtonStyles,
+                  ),
                   Row(
                     children: [
                       InkWell(
@@ -69,7 +74,10 @@ class _ChangeAvatarConfigsState extends State<ChangeAvatarConfigs> {
               const SizedBox(
                 height: 10,
               ),
-              const Text(Strings.background),
+              Text(
+                Strings.background,
+                style: TextStyles.textButtonStyles,
+              ),
               const SizedBox(
                 height: 10,
               ),

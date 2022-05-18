@@ -9,14 +9,15 @@ import 'package:my_personal_website/home/widget/show_avatars.dart';
 import '../../config/images_path.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
-
+  const HomePage({Key? key, required this.changeDarkMode}) : super(key: key);
+  final VoidCallback changeDarkMode;
   @override
   _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
   final controller = HomePageController();
+  bool isDarkMode = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,6 +34,14 @@ class _HomePageState extends State<HomePage> {
           ],
         )),
         actions: [
+          IconButton(
+              onPressed: () {
+                setState(() {
+                  widget.changeDarkMode();
+                  isDarkMode = !isDarkMode;
+                });
+              },
+              icon: Icon(isDarkMode ? Icons.sunny : Icons.dark_mode)),
           TextButton(
               onPressed: () {},
               child: Text(
