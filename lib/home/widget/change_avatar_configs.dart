@@ -34,7 +34,7 @@ class _ChangeAvatarConfigsState extends State<ChangeAvatarConfigs> {
           boxShadow: const [
             BoxShadow(color: Colors.black54, offset: Offset(-0.5, 1))
           ],
-          color: Colors.white,
+          color: Theme.of(context).backgroundColor,
           borderRadius: BorderRadiusDirectional.circular(8),
         ),
         child: Padding(
@@ -46,7 +46,7 @@ class _ChangeAvatarConfigsState extends State<ChangeAvatarConfigs> {
                 children: [
                   Text(
                     Strings.avatar,
-                    style: TextStyles.textButtonStyles,
+                    style: TextStyles.standardTextStyle,
                   ),
                   Row(
                     children: [
@@ -76,7 +76,7 @@ class _ChangeAvatarConfigsState extends State<ChangeAvatarConfigs> {
               ),
               Text(
                 Strings.background,
-                style: TextStyles.textButtonStyles,
+                style: TextStyles.standardTextStyle,
               ),
               const SizedBox(
                 height: 10,

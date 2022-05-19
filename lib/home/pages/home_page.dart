@@ -66,7 +66,7 @@ class _HomePageState extends State<HomePage> {
           child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          AvatarWidget(),
+          const AvatarWidget(),
           Text(
             Strings.introduction,
             style: TextStyles.titleTextStyle,
