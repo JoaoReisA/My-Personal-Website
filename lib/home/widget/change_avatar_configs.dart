@@ -120,7 +120,6 @@ class _ChangeAvatarConfigsState extends State<ChangeAvatarConfigs> {
           ),
         ),
       ),
-      replacement: Container(),
     );
   }
 }

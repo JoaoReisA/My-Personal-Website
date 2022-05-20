@@ -87,7 +87,6 @@ class _AvatarWidgetState extends State<AvatarWidget> {
                       });
                     },
                   ),
-                  replacement: Container(),
                 ),
                 ChangeAvatarConfigs(
                   showSelectionBanner: showSelectionBanner,
