@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:my_personal_website/home/pages/home_page.dart';
+import 'package:my_personal_website/base_page.dart';
+
+import 'config/route_enum.dart';
 
 void main() {
   runApp(const App());
@@ -26,16 +28,18 @@ class _AppState extends State<App> {
         backgroundColor: Colors.white,
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: HomePage(
-        changeDarkMode: () => setState(
+      darkTheme: isDarkMode
+          ? ThemeData.dark().copyWith(backgroundColor: Colors.grey[800])
+          : null,
+      onGenerateRoute: CustomRouter.generateRoutes,
+      home: BasePage(
+          arguments: BasePageArguments(
+        () => setState(
           () {
             isDarkMode = !isDarkMode;
           },
         ),
-      ),
-      darkTheme: isDarkMode
-          ? ThemeData.dark().copyWith(backgroundColor: Colors.grey[800])
-          : null,
+      )),
     );
   }
 }
