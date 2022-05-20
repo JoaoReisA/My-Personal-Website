@@ -64,9 +64,10 @@ class _BasePageState extends State<BasePage> {
               )),
           TextButton(
             onPressed: () {
-              setState(() {
-                index = 1;
-              });
+              // setState(() {
+              //   index = 1;
+              // });
+              controller.htmlOpenLink(Strings.githubUrl);
             },
             child: Text(
               Strings.projectsButton,
