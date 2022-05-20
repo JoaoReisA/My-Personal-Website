@@ -74,16 +74,16 @@ class _BasePageState extends State<BasePage> {
               style: TextStyles.textButtonStyles,
             ),
           ),
-          TextButton(
-              onPressed: () {
-                setState(() {
-                  index = 2;
-                });
-              },
-              child: Text(
-                Strings.aboutMeButton,
-                style: TextStyles.textButtonStyles,
-              )),
+          // TextButton(
+          //     onPressed: () {
+          //       setState(() {
+          //         index = 2;
+          //       });
+          //     },
+          //     child: Text(
+          //       Strings.aboutMeButton,
+          //       style: TextStyles.textButtonStyles,
+          //     )),
         ],
       ),
       body: bodyList[index],
