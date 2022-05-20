@@ -5,10 +5,10 @@ import 'package:my_personal_website/about_me/pages/about_me_page.dart';
 import 'package:my_personal_website/home/pages/home_page.dart';
 import 'package:my_personal_website/projects/pages/projects_page.dart';
 
-import 'config/images_path.dart';
-import 'config/strings.dart';
-import 'config/text_styles.dart';
-import 'home/pages/home_page_controller.dart';
+import '../config/images_path.dart';
+import '../config/strings.dart';
+import '../config/text_styles.dart';
+import 'base_page_controller.dart';
 
 class BasePageArguments {
   final VoidCallback changeDarkMode;
@@ -25,7 +25,7 @@ class BasePage extends StatefulWidget {
 
 class _BasePageState extends State<BasePage> {
   bool isDarkMode = true;
-  final controller = HomePageController();
+  final controller = BasePageController();
   int index = 0;
 
   @override
@@ -90,8 +90,11 @@ class _BasePageState extends State<BasePage> {
     );
   }
 
-  List<Widget> get bodyList =>
-      [const HomePage(), const ProjectsPage(), const AboutMePage()];
+  List<Widget> get bodyList => [
+        const HomePage(),
+        const ProjectsPage(),
+        const AboutMePage(),
+      ];
 
   List<Widget> get iconsList => [
         Row(

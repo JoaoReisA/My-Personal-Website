@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_personal_website/config/strings.dart';
 import 'package:my_personal_website/config/text_styles.dart';
-import 'package:my_personal_website/home/pages/home_page_controller.dart';
+import 'package:my_personal_website/base/base_page_controller.dart';
 import 'package:my_personal_website/home/widget/show_avatars.dart';
 
 class HomePage extends StatefulWidget {
@@ -13,7 +13,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final controller = HomePageController();
+  final controller = BasePageController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
