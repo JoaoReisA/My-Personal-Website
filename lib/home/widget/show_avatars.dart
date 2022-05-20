@@ -16,8 +16,10 @@ class _AvatarWidgetState extends State<AvatarWidget> {
   PageController pageController = PageController();
 
   Color color = Colors.green;
+
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return InkWell(
       hoverColor: Colors.transparent,
       focusColor: Colors.transparent,
@@ -32,7 +34,7 @@ class _AvatarWidgetState extends State<AvatarWidget> {
             }
           : null,
       child: Padding(
-        padding: const EdgeInsets.only(left: 160),
+        padding: const EdgeInsets.only(left: 0),
         child: Row(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
@@ -70,42 +72,44 @@ class _AvatarWidgetState extends State<AvatarWidget> {
                 ),
               ),
             ),
-            Visibility(
-              visible: hoverIsOn,
-              child: IconButton(
-                splashColor: Colors.purple,
-                color: Colors.deepPurple,
-                icon: const Icon(Icons.drag_indicator),
-                onPressed: () {
-                  setState(() {
-                    showSelectionBanner = !showSelectionBanner;
-                    hoverIsEnabled = !hoverIsEnabled;
-                  });
-                },
-              ),
-              replacement: Container(
-                width: 40,
-              ),
+            Row(
+              children: [
+                Visibility(
+                  visible: hoverIsOn,
+                  child: IconButton(
+                    splashColor: Colors.purple,
+                    color: Colors.deepPurple,
+                    icon: const Icon(Icons.drag_indicator),
+                    onPressed: () {
+                      setState(() {
+                        showSelectionBanner = !showSelectionBanner;
+                        hoverIsEnabled = !hoverIsEnabled;
+                      });
+                    },
+                  ),
+                  replacement: Container(),
+                ),
+                ChangeAvatarConfigs(
+                  showSelectionBanner: showSelectionBanner,
+                  onClickBack: () {
+                    pageController.previousPage(
+                        duration: const Duration(milliseconds: 100),
+                        curve: Curves.easeOut);
+                  },
+                  onClickFoward: () {
+                    pageController.nextPage(
+                        duration: const Duration(milliseconds: 100),
+                        curve: Curves.easeIn);
+                  },
+                  onClickColor: (selectedColor) {
+                    setState(() {
+                      color = selectedColor;
+                    });
+                  },
+                  color: color,
+                )
+              ],
             ),
-            ChangeAvatarConfigs(
-              showSelectionBanner: showSelectionBanner,
-              onClickBack: () {
-                pageController.previousPage(
-                    duration: const Duration(milliseconds: 100),
-                    curve: Curves.easeOut);
-              },
-              onClickFoward: () {
-                pageController.nextPage(
-                    duration: const Duration(milliseconds: 100),
-                    curve: Curves.easeIn);
-              },
-              onClickColor: (selectedColor) {
-                setState(() {
-                  color = selectedColor;
-                });
-              },
-              color: color,
-            )
           ],
         ),
       ),

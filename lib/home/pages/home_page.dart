@@ -62,21 +62,23 @@ class _HomePageState extends State<HomePage> {
               )),
         ],
       ),
-      body: Center(
-          child: Column(
+      body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const AvatarWidget(),
+          const Center(child: AvatarWidget()),
           Text(
             Strings.introduction,
             style: TextStyles.titleTextStyle,
+            textAlign: TextAlign.center,
           ),
           Text(
             Strings.whatIdo,
             style: TextStyles.subtitleTextStyle,
+            textAlign: TextAlign.center,
           ),
         ],
-      )),
+      ),
       persistentFooterButtons: [...iconsList],
     );
   }
