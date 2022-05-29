@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:my_personal_website/about_me/pages/about_me_page.dart';
 import 'package:my_personal_website/base/base_page_controller.dart';
 
+import '../../config/images_path.dart';
 import '../widget/avatar_group_widget.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({
-    Key? key,
-  }) : super(key: key);
+  const HomePage({Key? key, required this.onChangeImage}) : super(key: key);
+
+  final Function(String) onChangeImage;
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -20,6 +21,13 @@ class _HomePageState extends State<HomePage> {
         const AboutMePage(),
         const AvatarGroupWidget(),
         const AvatarGroupWidget()
+      ];
+
+  List<String> get imagePaths => <String>[
+        ImagesPath.cartiWLRBackground,
+        ImagesPath.cartiDieLitBackground,
+        ImagesPath.cartiWLRBackground,
+        ImagesPath.cartiDieLitBackground,
       ];
   @override
   Widget build(BuildContext context) {
@@ -37,6 +45,7 @@ class _HomePageState extends State<HomePage> {
                         pageController.previousPage(
                             duration: const Duration(milliseconds: 200),
                             curve: Curves.easeIn);
+                        widget.onChangeImage(imagePaths[index]);
                       },
                       icon: const Icon(Icons.arrow_upward_rounded))
                   : const SizedBox.shrink(),
@@ -51,6 +60,7 @@ class _HomePageState extends State<HomePage> {
                               duration: const Duration(milliseconds: 200),
                               curve: Curves.easeIn);
                         }
+                        widget.onChangeImage(imagePaths[index]);
                       },
                       icon: const Icon(Icons.arrow_downward_rounded))
                   : Container()

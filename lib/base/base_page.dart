@@ -27,14 +27,14 @@ class _BasePageState extends State<BasePage> {
   bool isDarkMode = true;
   final controller = BasePageController();
   int index = 0;
+  String imagePath = ImagesPath.cartiDieLitBackground;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       constraints: const BoxConstraints.expand(),
-      decoration: const BoxDecoration(
-        image: DecorationImage(
-            image: AssetImage(ImagesPath.cartiBackground), fit: BoxFit.cover),
+      decoration: BoxDecoration(
+        image: DecorationImage(image: AssetImage(imagePath), fit: BoxFit.cover),
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
@@ -100,7 +100,11 @@ class _BasePageState extends State<BasePage> {
   }
 
   List<Widget> get bodyList => [
-        const HomePage(),
+        HomePage(onChangeImage: (path) {
+          setState(() {
+            imagePath = path;
+          });
+        }),
         const ProjectsPage(),
         const AboutMePage(),
       ];

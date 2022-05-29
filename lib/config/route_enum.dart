@@ -16,7 +16,10 @@ enum Routes {
 class CustomRouter {
   static Route<dynamic> generateRoutes(RouteSettings settings) {
     if (settings.name == Routes.home.routeName) {
-      return MaterialPageRoute(builder: (_) => const HomePage());
+      return MaterialPageRoute(
+          builder: (_) => HomePage(
+                onChangeImage: (p0) {},
+              ));
     } else if (settings.name == Routes.aboutMe.routeName) {
       return MaterialPageRoute(builder: (_) => const AboutMePage());
     } else if (settings.name == Routes.projects.routeName) {
