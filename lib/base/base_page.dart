@@ -27,7 +27,7 @@ class _BasePageState extends State<BasePage> {
   bool isDarkMode = true;
   final controller = BasePageController();
   int index = 0;
-  String imagePath = ImagesPath.cartiDieLitBackground;
+  String imagePath = ImagesPath.dondaBackground;
 
   @override
   Widget build(BuildContext context) {

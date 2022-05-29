@@ -12,6 +12,7 @@ class ImagesPath {
   static const instagramLogo = "assets/icons/instagram_icon.svg";
   static const cartiDieLitBackground = "assets/images/carti.png";
   static const cartiWLRBackground = "assets/images/wlr.jpg";
+  static const dondaBackground = "assets/images/donda.png";
   static get imagesList => [
         blinkAvatar,
         peaceAvatar,

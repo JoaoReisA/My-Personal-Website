@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mouse_parallax/mouse_parallax.dart';
 import 'package:my_personal_website/config/images_path.dart';
 import 'package:my_personal_website/home/widget/change_avatar_configs.dart';
 
@@ -48,27 +49,39 @@ class _AvatarWidgetState extends State<AvatarWidget> {
                   ],
                   color: Theme.of(context).backgroundColor,
                   borderRadius: BorderRadiusDirectional.circular(16)),
-              child: Padding(
-                padding: const EdgeInsets.all(16),
-                child: Container(
-                  decoration: BoxDecoration(
-                      gradient: LinearGradient(colors: [
-                        color,
-                        Colors.deepPurple,
-                      ], begin: Alignment.bottomLeft),
-                      borderRadius: BorderRadiusDirectional.circular(16)),
-                  child: Center(
-                    child: PageView.builder(
-                        controller: pageController,
-                        itemCount: ImagesPath.imagesList.length,
-                        itemBuilder: (context, index) {
-                          final list = ImagesPath.imagesList;
-                          return Image.asset(
-                            list[index],
-                          );
-                        }),
+              child: ParallaxStack(
+                layers: [
+                  ParallaxLayer(
+                    yRotation: 0.50,
+                    xRotation: 0.50,
+                    xOffset: 30,
+                    yOffset: 30,
+
+                    // xRotation: 60,
+                    child: Padding(
+                      padding: const EdgeInsets.all(16),
+                      child: Container(
+                        decoration: BoxDecoration(
+                            gradient: LinearGradient(colors: [
+                              color,
+                              Colors.deepPurple,
+                            ], begin: Alignment.bottomLeft),
+                            borderRadius: BorderRadiusDirectional.circular(16)),
+                        child: Center(
+                          child: PageView.builder(
+                              controller: pageController,
+                              itemCount: ImagesPath.imagesList.length,
+                              itemBuilder: (context, index) {
+                                final list = ImagesPath.imagesList;
+                                return Image.asset(
+                                  list[index],
+                                );
+                              }),
+                        ),
+                      ),
+                    ),
                   ),
-                ),
+                ],
               ),
             ),
             Row(
@@ -86,6 +99,7 @@ class _AvatarWidgetState extends State<AvatarWidget> {
                       });
                     },
                   ),
+                  replacement: Container(width: 40),
                 ),
                 ChangeAvatarConfigs(
                   showSelectionBanner: showSelectionBanner,

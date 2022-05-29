@@ -36,6 +36,7 @@ dependencies:
   google_fonts: ^2.2.0
   flutter_colorpicker: ^1.0.3
   flutter_svg: ^1.0.3
+  mouse_parallax: ^1.1.0
 
 dev_dependencies:
   flutter_test:

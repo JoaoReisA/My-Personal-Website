@@ -19,14 +19,10 @@ class _HomePageState extends State<HomePage> {
   List<Widget> get pages => <Widget>[
         const AvatarGroupWidget(),
         const AboutMePage(),
-        const AvatarGroupWidget(),
-        const AvatarGroupWidget()
       ];
 
   List<String> get imagePaths => <String>[
-        ImagesPath.cartiWLRBackground,
-        ImagesPath.cartiDieLitBackground,
-        ImagesPath.cartiWLRBackground,
+        ImagesPath.dondaBackground,
         ImagesPath.cartiDieLitBackground,
       ];
   @override
