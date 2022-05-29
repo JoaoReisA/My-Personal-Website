@@ -30,64 +30,72 @@ class _BasePageState extends State<BasePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
+    return Container(
+      constraints: const BoxConstraints.expand(),
+      decoration: const BoxDecoration(
+        image: DecorationImage(
+            image: AssetImage(ImagesPath.cartiBackground), fit: BoxFit.cover),
+      ),
+      child: Scaffold(
         backgroundColor: Colors.transparent,
-        elevation: 0,
-        title: Text.rich(TextSpan(
-          text: Strings.firstName,
-          style: TextStyles.standardPurpleStyle,
-          children: [
-            TextSpan(
-                text: Strings.middleName,
-                style: TextStyles.standardPurpleBoldStyle)
-          ],
-        )),
-        actions: [
-          IconButton(
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          title: Text.rich(TextSpan(
+            text: Strings.firstName,
+            style: TextStyles.standardPurpleStyle,
+            children: [
+              TextSpan(
+                  text: Strings.middleName,
+                  style: TextStyles.standardPurpleBoldStyle)
+            ],
+          )),
+          actions: [
+            IconButton(
+                onPressed: () {
+                  setState(() {
+                    widget.arguments.changeDarkMode();
+                    isDarkMode = !isDarkMode;
+                  });
+                },
+                icon: Icon(isDarkMode ? Icons.sunny : Icons.dark_mode)),
+            TextButton(
+                onPressed: () {
+                  setState(() {
+                    index = 0;
+                  });
+                },
+                child: Text(
+                  Strings.homeButton,
+                  style: TextStyles.textButtonStyles,
+                )),
+            TextButton(
               onPressed: () {
-                setState(() {
-                  widget.arguments.changeDarkMode();
-                  isDarkMode = !isDarkMode;
-                });
-              },
-              icon: Icon(isDarkMode ? Icons.sunny : Icons.dark_mode)),
-          TextButton(
-              onPressed: () {
-                setState(() {
-                  index = 0;
-                });
+                // setState(() {
+                //   index = 1;
+                // });
+                controller.htmlOpenLink(Strings.githubUrl);
               },
               child: Text(
-                Strings.homeButton,
+                Strings.projectsButton,
                 style: TextStyles.textButtonStyles,
-              )),
-          TextButton(
-            onPressed: () {
-              // setState(() {
-              //   index = 1;
-              // });
-              controller.htmlOpenLink(Strings.githubUrl);
-            },
-            child: Text(
-              Strings.projectsButton,
-              style: TextStyles.textButtonStyles,
+              ),
             ),
-          ),
-          // TextButton(
-          //     onPressed: () {
-          //       setState(() {
-          //         index = 2;
-          //       });
-          //     },
-          //     child: Text(
-          //       Strings.aboutMeButton,
-          //       style: TextStyles.textButtonStyles,
-          //     )),
-        ],
+            // TextButton(
+            //     onPressed: () {
+            //       setState(() {
+            //         index = 2;
+            //       });
+            //     },
+            //     child: Text(
+            //       Strings.aboutMeButton,
+            //       style: TextStyles.textButtonStyles,
+            //     )),
+          ],
+        ),
+        body: bodyList[index],
+        persistentFooterButtons: [...iconsList],
       ),
-      body: bodyList[index],
-      persistentFooterButtons: [...iconsList],
     );
   }
 
