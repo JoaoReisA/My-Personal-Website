@@ -19,7 +19,6 @@ class _AvatarWidgetState extends State<AvatarWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     return InkWell(
       hoverColor: Colors.transparent,
       focusColor: Colors.transparent,

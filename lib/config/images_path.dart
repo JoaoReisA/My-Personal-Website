@@ -10,6 +10,7 @@ class ImagesPath {
   static const githubLogo = "assets/icons/github_icon.svg";
   static const linkedinLogo = "assets/icons/linkedin_icon.svg";
   static const instagramLogo = "assets/icons/instagram_icon.svg";
+  static const cartiBackground = "assets/images/carti.png";
   static get imagesList => [
         blinkAvatar,
         peaceAvatar,

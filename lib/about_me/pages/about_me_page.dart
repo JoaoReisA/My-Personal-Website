@@ -13,22 +13,20 @@ class AboutMePage extends StatefulWidget {
 class _AboutMePageState extends State<AboutMePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Column(
-          children: [
-            Text(
-              "Sobre Mim",
-              style: TextStyles.titleTextStyle,
-            ),
-            SizedBox(
-                child: Text(
-              Strings.aboutMeDescription,
-              style: TextStyles.standardTextStyle,
-              textAlign: TextAlign.center,
-            ))
-          ],
-        ),
+    return Center(
+      child: Column(
+        children: [
+          Text(
+            "Sobre Mim",
+            style: TextStyles.titleTextStyle,
+          ),
+          SizedBox(
+              child: Text(
+            Strings.aboutMeDescription,
+            style: TextStyles.standardTextStyle,
+            textAlign: TextAlign.center,
+          ))
+        ],
       ),
     );
   }
