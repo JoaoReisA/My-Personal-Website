@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_personal_website/about_me/pages/about_me_page.dart';
 import 'package:my_personal_website/base/base_page_controller.dart';
 
 import '../widget/avatar_group_widget.dart';
@@ -16,7 +17,7 @@ class _HomePageState extends State<HomePage> {
   PageController pageController = PageController();
   List<Widget> get pages => <Widget>[
         const AvatarGroupWidget(),
-        const AvatarGroupWidget(),
+        const AboutMePage(),
         const AvatarGroupWidget(),
         const AvatarGroupWidget()
       ];
