@@ -1,10 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_personal_website/about_me/pages/about_me_page.dart';
-import 'package:my_personal_website/config/images_path.dart';
-import 'package:my_personal_website/config/strings.dart';
-import 'package:my_personal_website/config/text_styles.dart';
 import 'package:my_personal_website/base/base_page_controller.dart';
-import 'package:my_personal_website/home/widget/show_avatars.dart';
 
 import '../widget/avatar_group_widget.dart';
 
@@ -47,15 +42,17 @@ class _HomePageState extends State<HomePage> {
               const Spacer(),
               Center(child: pages[index]),
               const Spacer(),
-              IconButton(
-                  onPressed: () {
-                    if (index != pages.length - 1) {
-                      pageController.nextPage(
-                          duration: const Duration(milliseconds: 200),
-                          curve: Curves.easeIn);
-                    }
-                  },
-                  icon: const Icon(Icons.arrow_downward_rounded))
+              index != pages.length - 1
+                  ? IconButton(
+                      onPressed: () {
+                        if (index != pages.length - 1) {
+                          pageController.nextPage(
+                              duration: const Duration(milliseconds: 200),
+                              curve: Curves.easeIn);
+                        }
+                      },
+                      icon: const Icon(Icons.arrow_downward_rounded))
+                  : Container()
             ],
           );
         });
