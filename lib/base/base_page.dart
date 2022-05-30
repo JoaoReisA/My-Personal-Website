@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:just_audio/just_audio.dart';
+import 'package:lottie/lottie.dart';
 import 'package:my_personal_website/about_me/pages/about_me_page.dart';
 import 'package:my_personal_website/home/pages/home_page.dart';
 import 'package:my_personal_website/projects/pages/projects_page.dart';
@@ -33,6 +34,7 @@ class _BasePageState extends State<BasePage> {
   @override
   void initState() {
     super.initState();
+
     controller.init();
   }
 
@@ -83,7 +85,12 @@ class _BasePageState extends State<BasePage> {
                               "True Love - Kanye West ft xxxtentacion",
                               style: TextStyles.standardTextStyle
                                   .copyWith(fontSize: 16),
-                            )
+                            ),
+                            Lottie.asset(
+                              'assets/lottie/music-waves.json',
+                              width: 20,
+                              height: 20,
+                            ),
                           ],
                         );
                       }
@@ -98,7 +105,9 @@ class _BasePageState extends State<BasePage> {
                             "True Love - Kanye West ft xxxtentacion",
                             style: TextStyles.standardTextStyle
                                 .copyWith(fontSize: 16),
-                          )
+                          ),
+                          Lottie.asset('assets/lottie/music-waves.json',
+                              width: 20, height: 20, animate: false),
                         ],
                       );
                     }
