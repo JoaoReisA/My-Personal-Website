@@ -46,6 +46,7 @@ class _BasePageState extends State<BasePage> {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Container(
       constraints: const BoxConstraints.expand(),
       decoration: BoxDecoration(
@@ -81,11 +82,13 @@ class _BasePageState extends State<BasePage> {
                                   await controller.player.pause();
                                 },
                                 icon: const Icon(Icons.pause)),
-                            Text(
-                              "True Love - Kanye West ft xxxtentacion",
-                              style: TextStyles.standardTextStyle
-                                  .copyWith(fontSize: 16),
-                            ),
+                            size.width > 400
+                                ? Text(
+                                    "True Love - Kanye West ft xxxtentacion",
+                                    style: TextStyles.standardTextStyle
+                                        .copyWith(fontSize: 16),
+                                  )
+                                : Container(),
                             Lottie.asset(
                               'assets/lottie/music-waves.json',
                               width: 20,
@@ -101,11 +104,13 @@ class _BasePageState extends State<BasePage> {
                                 await controller.player.play();
                               },
                               icon: const Icon(Icons.play_arrow)),
-                          Text(
-                            "True Love - Kanye West ft xxxtentacion",
-                            style: TextStyles.standardTextStyle
-                                .copyWith(fontSize: 16),
-                          ),
+                          size.width > 400
+                              ? Text(
+                                  "True Love - Kanye West ft xxxtentacion",
+                                  style: TextStyles.standardTextStyle
+                                      .copyWith(fontSize: 16),
+                                )
+                              : Container(),
                           Lottie.asset('assets/lottie/music-waves.json',
                               width: 20, height: 20, animate: false),
                         ],
@@ -115,48 +120,50 @@ class _BasePageState extends State<BasePage> {
                   }),
             ],
           ),
-          actions: [
-            IconButton(
-                onPressed: () {
-                  setState(() {
-                    widget.arguments.changeDarkMode();
-                    isDarkMode = !isDarkMode;
-                  });
-                },
-                icon: Icon(isDarkMode ? Icons.sunny : Icons.dark_mode)),
-            TextButton(
-                onPressed: () {
-                  setState(() {
-                    index = 0;
-                  });
-                },
-                child: Text(
-                  Strings.homeButton,
-                  style: TextStyles.textButtonStyles,
-                )),
-            TextButton(
-              onPressed: () {
-                // setState(() {
-                //   index = 1;
-                // });
-                controller.htmlOpenLink(Strings.githubUrl);
-              },
-              child: Text(
-                Strings.projectsButton,
-                style: TextStyles.textButtonStyles,
-              ),
-            ),
-            // TextButton(
-            //     onPressed: () {
-            //       setState(() {
-            //         index = 2;
-            //       });
-            //     },
-            //     child: Text(
-            //       Strings.aboutMeButton,
-            //       style: TextStyles.textButtonStyles,
-            //     )),
-          ],
+          actions: size.width > 400
+              ? [
+                  IconButton(
+                      onPressed: () {
+                        setState(() {
+                          widget.arguments.changeDarkMode();
+                          isDarkMode = !isDarkMode;
+                        });
+                      },
+                      icon: Icon(isDarkMode ? Icons.sunny : Icons.dark_mode)),
+                  TextButton(
+                      onPressed: () {
+                        setState(() {
+                          index = 0;
+                        });
+                      },
+                      child: Text(
+                        Strings.homeButton,
+                        style: TextStyles.textButtonStyles,
+                      )),
+                  TextButton(
+                    onPressed: () {
+                      // setState(() {
+                      //   index = 1;
+                      // });
+                      controller.htmlOpenLink(Strings.githubUrl);
+                    },
+                    child: Text(
+                      Strings.projectsButton,
+                      style: TextStyles.textButtonStyles,
+                    ),
+                  ),
+                  // TextButton(
+                  //     onPressed: () {
+                  //       setState(() {
+                  //         index = 2;
+                  //       });
+                  //     },
+                  //     child: Text(
+                  //       Strings.aboutMeButton,
+                  //       style: TextStyles.textButtonStyles,
+                  //     )),
+                ]
+              : null,
         ),
         body: bodyList[index],
         persistentFooterButtons: [...iconsList],
