@@ -65,26 +65,45 @@ class _BasePageState extends State<BasePage> {
                       style: TextStyles.standardPurpleBoldStyle)
                 ],
               )),
-              const Spacer(),
               StreamBuilder<PlayerState>(
+                  //TODO: Maybe add a music queue
+                  //TODO: Put the name of the song playing in the appbar
                   stream: controller.player.playerStateStream,
                   builder: (context, snapshot) {
-                    if (snapshot.data!.playing) {
-                      return IconButton(
-                          //TODO: Maybe add a music queue
-                          //TODO: Put the name of the song playing in the appbar
-                          onPressed: () async {
-                            await controller.player.pause();
-                          },
-                          icon: const Icon(Icons.pause));
+                    if (snapshot.hasData) {
+                      if (snapshot.data!.playing) {
+                        return Row(
+                          children: [
+                            IconButton(
+                                onPressed: () async {
+                                  await controller.player.pause();
+                                },
+                                icon: const Icon(Icons.pause)),
+                            Text(
+                              "True Love - Kanye West ft xxxtentacion",
+                              style: TextStyles.standardTextStyle
+                                  .copyWith(fontSize: 16),
+                            )
+                          ],
+                        );
+                      }
+                      return Row(
+                        children: [
+                          IconButton(
+                              onPressed: () async {
+                                await controller.player.play();
+                              },
+                              icon: const Icon(Icons.play_arrow)),
+                          Text(
+                            "True Love - Kanye West ft xxxtentacion",
+                            style: TextStyles.standardTextStyle
+                                .copyWith(fontSize: 16),
+                          )
+                        ],
+                      );
                     }
-                    return IconButton(
-                        onPressed: () async {
-                          await controller.player.play();
-                        },
-                        icon: const Icon(Icons.play_arrow));
+                    return Container();
                   }),
-              const Spacer(),
             ],
           ),
           actions: [

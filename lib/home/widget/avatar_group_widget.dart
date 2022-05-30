@@ -19,7 +19,7 @@ class AvatarGroupWidget extends StatelessWidget {
           children: [
             const Center(
                 child: Padding(
-              padding: EdgeInsets.only(left: 120.0),
+              padding: EdgeInsets.only(left: 130.0),
               child: AvatarWidget(),
             )),
             Text(
@@ -29,7 +29,8 @@ class AvatarGroupWidget extends StatelessWidget {
             ),
             Text(
               Strings.whatIdo,
-              style: TextStyles.subtitleTextStyle,
+              style: TextStyles.subtitleTextStyle
+                  .copyWith(fontWeight: FontWeight.w500),
               textAlign: TextAlign.center,
             ),
           ],

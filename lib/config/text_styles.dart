@@ -13,8 +13,7 @@ class TextStyles {
   static final titleTextStyle =
       standardTextStyle.copyWith(fontWeight: FontWeight.bold, fontSize: 65);
 
-  static final subtitleTextStyle =
-      standardTextStyle.copyWith(color: Colors.grey[700], fontSize: 20);
+  static final subtitleTextStyle = standardTextStyle.copyWith(fontSize: 20);
 
   static final textButtonStyles = standardTextStyle.copyWith(
       color: Colors.deepPurple, fontWeight: FontWeight.bold);
