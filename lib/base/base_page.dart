@@ -55,115 +55,60 @@ class _BasePageState extends State<BasePage> {
       child: Scaffold(
         backgroundColor: Colors.transparent,
         appBar: AppBar(
+          centerTitle: true,
           backgroundColor: Colors.transparent,
           elevation: 0,
-          title: Row(
-            children: [
-              Text.rich(TextSpan(
-                text: Strings.firstName,
-                style: TextStyles.standardPurpleStyle,
-                children: [
-                  TextSpan(
-                      text: Strings.middleName,
-                      style: TextStyles.standardPurpleBoldStyle)
-                ],
-              )),
-              StreamBuilder<PlayerState>(
-                  //TODO: Maybe add a music queue
-                  //TODO: Put the name of the song playing in the appbar
-                  stream: controller.player.playerStateStream,
-                  builder: (context, snapshot) {
-                    if (snapshot.hasData) {
-                      if (snapshot.data!.playing) {
-                        return Row(
-                          children: [
-                            IconButton(
-                                onPressed: () async {
-                                  await controller.player.pause();
-                                },
-                                icon: const Icon(Icons.pause)),
-                            size.width > 400
-                                ? Text(
-                                    "True Love - Kanye West ft xxxtentacion",
-                                    style: TextStyles.standardTextStyle
-                                        .copyWith(fontSize: 16),
-                                  )
-                                : Container(),
-                            Lottie.asset(
-                              'assets/lottie/music-waves.json',
-                              width: 20,
-                              height: 20,
-                            ),
-                          ],
-                        );
-                      }
-                      return Row(
-                        children: [
-                          IconButton(
-                              onPressed: () async {
-                                await controller.player.play();
-                              },
-                              icon: const Icon(Icons.play_arrow)),
-                          size.width > 400
-                              ? Text(
-                                  "True Love - Kanye West ft xxxtentacion",
-                                  style: TextStyles.standardTextStyle
-                                      .copyWith(fontSize: 16),
-                                )
-                              : Container(),
-                          Lottie.asset('assets/lottie/music-waves.json',
-                              width: 20, height: 20, animate: false),
-                        ],
-                      );
-                    }
-                    return Container();
-                  }),
-            ],
-          ),
-          actions: size.width > 400
-              ? [
-                  IconButton(
-                      onPressed: () {
-                        setState(() {
-                          widget.arguments.changeDarkMode();
-                          isDarkMode = !isDarkMode;
-                        });
-                      },
-                      icon: Icon(isDarkMode ? Icons.sunny : Icons.dark_mode)),
-                  // TextButton(
-                  //     onPressed: () {
-                  //       setState(() {
-                  //         index = 0;
-                  //       });
-                  //     },
-                  //     child: Text(
-                  //       Strings.homeButton,
-                  //       style: TextStyles.textButtonStyles,
-                  //     )),
-                  TextButton(
-                    onPressed: () {
-                      // setState(() {
-                      //   index = 1;
-                      // });
-                      controller.htmlOpenLink(Strings.githubUrl);
-                    },
-                    child: Text(
-                      Strings.projectsButton,
-                      style: TextStyles.textButtonStyles,
-                    ),
-                  ),
-                  // TextButton(
-                  //     onPressed: () {
-                  //       setState(() {
-                  //         index = 2;
-                  //       });
-                  //     },
-                  //     child: Text(
-                  //       Strings.aboutMeButton,
-                  //       style: TextStyles.textButtonStyles,
-                  //     )),
-                ]
-              : null,
+          title: StreamBuilder<PlayerState>(
+              //TODO: Maybe add a music queue
+              stream: controller.player.playerStateStream,
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  if (snapshot.data!.playing) {
+                    return Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        IconButton(
+                            onPressed: () async {
+                              await controller.player.pause();
+                            },
+                            icon: const Icon(Icons.pause)),
+                        size.width > 400
+                            ? Text(
+                                "True Love - Kanye West ft xxxtentacion",
+                                style: TextStyles.standardTextStyle
+                                    .copyWith(fontSize: 16),
+                              )
+                            : Container(),
+                        Lottie.asset(
+                          'assets/lottie/music-waves.json',
+                          width: 20,
+                          height: 20,
+                        ),
+                      ],
+                    );
+                  }
+                  return Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      IconButton(
+                          onPressed: () async {
+                            await controller.player.play();
+                          },
+                          icon: const Icon(Icons.play_arrow)),
+                      size.width > 400
+                          ? Text(
+                              "True Love - Kanye West ft xxxtentacion",
+                              style: TextStyles.standardTextStyle
+                                  .copyWith(fontSize: 16),
+                            )
+                          : Container(),
+                      Lottie.asset('assets/lottie/music-waves.json',
+                          width: 20, height: 20, animate: false),
+                    ],
+                  );
+                }
+                return Container();
+              }),
         ),
         body: bodyList[index],
         persistentFooterButtons: [...iconsList],
@@ -188,7 +133,7 @@ class _BasePageState extends State<BasePage> {
                   child: SvgPicture.asset(
                     ImagesPath.githubLogo,
                     semanticsLabel: "GitHub",
-                    color: Colors.deepPurple,
+                    color: Colors.white,
                   ),
                 ),
                 const SizedBox(
@@ -199,7 +144,7 @@ class _BasePageState extends State<BasePage> {
                   child: SvgPicture.asset(
                     ImagesPath.linkedinLogo,
                     semanticsLabel: "LinkedIn",
-                    color: Colors.deepPurple,
+                    color: Colors.white,
                   ),
                 ),
                 const SizedBox(
@@ -210,7 +155,7 @@ class _BasePageState extends State<BasePage> {
                   child: SvgPicture.asset(
                     ImagesPath.instagramLogo,
                     semanticsLabel: "Instagram",
-                    color: Colors.deepPurple,
+                    color: Colors.white,
                   ),
                 ),
               ],
@@ -220,7 +165,7 @@ class _BasePageState extends State<BasePage> {
               style: GoogleFonts.montserrat().copyWith(
                   fontWeight: FontWeight.bold,
                   fontSize: 12,
-                  color: Colors.deepPurple),
+                  color: Colors.white),
             ),
           ],
         ),
