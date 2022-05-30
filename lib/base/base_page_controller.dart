@@ -12,6 +12,11 @@ class BasePageController {
   void init() async {
     player = AudioPlayer();
     await player.setAsset('assets/audio/true_love.mp3');
-    await player.play();
+  }
+
+  void playSong() async {
+    Future.delayed(const Duration(milliseconds: 2000), () {
+      player.play();
+    });
   }
 }

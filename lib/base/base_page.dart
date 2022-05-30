@@ -30,11 +30,13 @@ class _BasePageState extends State<BasePage> {
   final controller = BasePageController();
   int index = 0;
   String imagePath = ImagesPath.dondaBackground;
-  bool isAudioRunning = false;
   @override
   void initState() {
     super.initState();
     controller.init();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      // controller.playSong();
+    });
   }
 
   @override
