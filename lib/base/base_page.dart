@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:just_audio/just_audio.dart';
 import 'package:my_personal_website/about_me/pages/about_me_page.dart';
 import 'package:my_personal_website/home/pages/home_page.dart';
 import 'package:my_personal_website/projects/pages/projects_page.dart';
@@ -65,17 +66,24 @@ class _BasePageState extends State<BasePage> {
                 ],
               )),
               const Spacer(),
-              IconButton(
-                  onPressed: () async {
-                    if (controller.player.playing) {
-                      await controller.player.pause();
-                    } else {
-                      await controller.player.play();
+              StreamBuilder<PlayerState>(
+                  stream: controller.player.playerStateStream,
+                  builder: (context, snapshot) {
+                    if (snapshot.data!.playing) {
+                      return IconButton(
+                          //TODO: Maybe add a music queue
+                          //TODO: Put the name of the song playing in the appbar
+                          onPressed: () async {
+                            await controller.player.pause();
+                          },
+                          icon: const Icon(Icons.pause));
                     }
-                  },
-                  icon: Icon(controller.player.playing
-                      ? Icons.pause
-                      : Icons.play_arrow)),
+                    return IconButton(
+                        onPressed: () async {
+                          await controller.player.play();
+                        },
+                        icon: const Icon(Icons.play_arrow));
+                  }),
               const Spacer(),
             ],
           ),
