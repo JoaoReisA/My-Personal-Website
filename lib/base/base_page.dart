@@ -100,11 +100,7 @@ class _BasePageState extends State<BasePage> {
   }
 
   List<Widget> get bodyList => [
-        HomePage(onChangeImage: (path) {
-          setState(() {
-            imagePath = path;
-          });
-        }),
+        const HomePage(),
         const ProjectsPage(),
         const AboutMePage(),
       ];
