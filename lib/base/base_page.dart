@@ -41,15 +41,29 @@ class _BasePageState extends State<BasePage> {
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           elevation: 0,
-          title: Text.rich(TextSpan(
-            text: Strings.firstName,
-            style: TextStyles.standardPurpleStyle,
+          title: Row(
             children: [
-              TextSpan(
-                  text: Strings.middleName,
-                  style: TextStyles.standardPurpleBoldStyle)
+              Text.rich(TextSpan(
+                text: Strings.firstName,
+                style: TextStyles.standardPurpleStyle,
+                children: [
+                  TextSpan(
+                      text: Strings.middleName,
+                      style: TextStyles.standardPurpleBoldStyle)
+                ],
+              )),
+              const Spacer(),
+              IconButton(
+                  onPressed: () {
+                    setState(() {
+                      widget.arguments.changeDarkMode();
+                      isDarkMode = !isDarkMode;
+                    });
+                  },
+                  icon: Icon(isDarkMode ? Icons.play_arrow : Icons.pause)),
+              const Spacer(),
             ],
-          )),
+          ),
           actions: [
             IconButton(
                 onPressed: () {
