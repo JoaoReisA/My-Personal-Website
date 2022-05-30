@@ -28,6 +28,18 @@ class _BasePageState extends State<BasePage> {
   final controller = BasePageController();
   int index = 0;
   String imagePath = ImagesPath.dondaBackground;
+  bool isAudioRunning = false;
+  @override
+  void initState() {
+    super.initState();
+    controller.init();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    controller.player.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -54,13 +66,16 @@ class _BasePageState extends State<BasePage> {
               )),
               const Spacer(),
               IconButton(
-                  onPressed: () {
-                    setState(() {
-                      widget.arguments.changeDarkMode();
-                      isDarkMode = !isDarkMode;
-                    });
+                  onPressed: () async {
+                    if (controller.player.playing) {
+                      await controller.player.pause();
+                    } else {
+                      await controller.player.play();
+                    }
                   },
-                  icon: Icon(isDarkMode ? Icons.play_arrow : Icons.pause)),
+                  icon: Icon(controller.player.playing
+                      ? Icons.pause
+                      : Icons.play_arrow)),
               const Spacer(),
             ],
           ),

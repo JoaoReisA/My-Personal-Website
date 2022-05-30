@@ -38,6 +38,7 @@ dependencies:
   flutter_svg: ^1.0.3
   mouse_parallax: ^1.1.0
   audio_service: ^0.18.4
+  just_audio: ^0.9.24
 
 dev_dependencies:
   flutter_test:
@@ -64,6 +65,7 @@ flutter:
   assets:
     - assets/icons/
     - assets/images/
+    - assets/audio/
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 

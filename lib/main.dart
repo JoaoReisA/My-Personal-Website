@@ -3,7 +3,7 @@ import 'package:my_personal_website/base/base_page.dart';
 
 import 'config/route_enum.dart';
 
-void main() {
+void main() async {
   runApp(const App());
 }
 
