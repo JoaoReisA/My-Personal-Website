@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:my_personal_website/about_me/pages/about_me_page.dart';
 import 'package:my_personal_website/base/base_page_controller.dart';
 
@@ -30,28 +31,38 @@ class _HomePageState extends State<HomePage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               index > 0
-                  ? IconButton(
-                      onPressed: () {
+                  ? InkWell(
+                      onTap: () {
                         pageController.previousPage(
                             duration: const Duration(milliseconds: 200),
                             curve: Curves.easeIn);
                       },
-                      icon: const Icon(Icons.arrow_upward_rounded))
+                      child: Lottie.asset(
+                        'assets/lottie/arrow-up.json',
+                        width: 20,
+                        height: 20,
+                      ),
+                    )
                   : const SizedBox.shrink(),
               const Spacer(),
               Center(child: pages[index]),
               const Spacer(),
               index != pages.length - 1
-                  ? IconButton(
-                      onPressed: () {
+                  ? InkWell(
+                      onTap: () {
                         if (index != pages.length - 1) {
                           pageController.nextPage(
                               duration: const Duration(milliseconds: 200),
                               curve: Curves.easeIn);
                         }
                       },
-                      icon: const Icon(Icons.arrow_downward_rounded))
-                  : Container()
+                      child: Lottie.asset(
+                        'assets/lottie/arrow-down.json',
+                        width: 30,
+                        height: 30,
+                      ),
+                    )
+                  : const SizedBox.shrink()
             ],
           );
         });

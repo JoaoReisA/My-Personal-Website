@@ -19,7 +19,7 @@ class AvatarGroupWidget extends StatelessWidget {
           children: [
             const Center(
                 child: Padding(
-              padding: EdgeInsets.only(left: 130.0),
+              padding: EdgeInsets.only(left: 180.0),
               child: AvatarWidget(),
             )),
             Text(
