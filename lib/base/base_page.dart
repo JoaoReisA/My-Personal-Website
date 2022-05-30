@@ -130,16 +130,16 @@ class _BasePageState extends State<BasePage> {
                         });
                       },
                       icon: Icon(isDarkMode ? Icons.sunny : Icons.dark_mode)),
-                  TextButton(
-                      onPressed: () {
-                        setState(() {
-                          index = 0;
-                        });
-                      },
-                      child: Text(
-                        Strings.homeButton,
-                        style: TextStyles.textButtonStyles,
-                      )),
+                  // TextButton(
+                  //     onPressed: () {
+                  //       setState(() {
+                  //         index = 0;
+                  //       });
+                  //     },
+                  //     child: Text(
+                  //       Strings.homeButton,
+                  //       style: TextStyles.textButtonStyles,
+                  //     )),
                   TextButton(
                     onPressed: () {
                       // setState(() {
