@@ -34,7 +34,6 @@ class _BasePageState extends State<BasePage> {
   @override
   void initState() {
     super.initState();
-
     controller.init();
   }
 
@@ -74,11 +73,12 @@ class _BasePageState extends State<BasePage> {
                             icon: const Icon(Icons.pause)),
                         size.width > 400
                             ? Text(
-                                "True Love - Kanye West ft xxxtentacion",
+                                Strings.musicTitle,
                                 style: TextStyles.standardTextStyle
                                     .copyWith(fontSize: 16),
                               )
                             : Container(),
+                        const SizedBox(width: 10),
                         Lottie.asset(
                           'assets/lottie/music-waves.json',
                           width: 20,
@@ -97,11 +97,12 @@ class _BasePageState extends State<BasePage> {
                           icon: const Icon(Icons.play_arrow)),
                       size.width > 400
                           ? Text(
-                              "True Love - Kanye West ft xxxtentacion",
+                              Strings.musicTitle,
                               style: TextStyles.standardTextStyle
                                   .copyWith(fontSize: 16),
                             )
                           : Container(),
+                      const SizedBox(width: 10),
                       Lottie.asset('assets/lottie/music-waves.json',
                           width: 20, height: 20, animate: false),
                     ],

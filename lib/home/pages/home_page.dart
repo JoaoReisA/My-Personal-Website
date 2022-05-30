@@ -23,6 +23,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return PageView.builder(
+        itemCount: pages.length,
         controller: pageController,
         scrollDirection: Axis.vertical,
         itemBuilder: (context, index) {

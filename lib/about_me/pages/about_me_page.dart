@@ -16,14 +16,13 @@ class _AboutMePageState extends State<AboutMePage> {
     return Center(
       child: Column(
         children: [
-          Text(
-            "Sobre Mim",
-            style: TextStyles.titleTextStyle,
-          ),
+          Text("Sobre Mim", style: TextStyles.titleTextStyle),
           SizedBox(
               child: Text(
             Strings.aboutMeDescription,
-            style: TextStyles.standardTextStyle,
+            style: TextStyles.standardTextStyle.copyWith(
+              fontSize: 20,
+            ),
             textAlign: TextAlign.center,
           ))
         ],

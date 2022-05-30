@@ -12,6 +12,6 @@ class BasePageController {
   void init() async {
     player = AudioPlayer();
     await player.setAsset('assets/audio/true_love.mp3');
-    // await player.play();
+    await player.play();
   }
 }

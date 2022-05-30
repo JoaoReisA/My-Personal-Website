@@ -2,7 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class TextStyles {
-  static final standardTextStyle = GoogleFonts.montserrat();
+  static final standardTextStyle = GoogleFonts.montserrat().copyWith(
+    shadows: const [
+      Shadow(color: Colors.black, blurRadius: 10, offset: Offset(1, 3)),
+      Shadow(color: Colors.black, blurRadius: 10),
+    ],
+  );
 
   static final standardPurpleBoldStyle = standardTextStyle.copyWith(
       color: Colors.deepPurple, fontWeight: FontWeight.bold);
