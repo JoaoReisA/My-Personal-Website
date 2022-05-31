@@ -55,7 +55,7 @@ class _ChangeAvatarConfigsState extends State<ChangeAvatarConfigs> {
                         child: const Icon(
                           Icons.arrow_back_ios,
                           size: 15,
-                          color: Colors.deepPurple,
+                          color: Colors.white,
                         ),
                       ),
                       InkWell(
@@ -63,7 +63,7 @@ class _ChangeAvatarConfigsState extends State<ChangeAvatarConfigs> {
                         child: const Icon(
                           Icons.arrow_forward_ios,
                           size: 15,
-                          color: Colors.deepPurple,
+                          color: Colors.white,
                         ),
                       )
                     ],

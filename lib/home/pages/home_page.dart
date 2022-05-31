@@ -40,8 +40,8 @@ class _HomePageState extends State<HomePage> {
                       },
                       child: Lottie.asset(
                         'assets/lottie/arrow-up.json',
-                        width: 20,
-                        height: 20,
+                        width: 30,
+                        height: 30,
                       ),
                     )
                   : const SizedBox.shrink(),
@@ -59,8 +59,8 @@ class _HomePageState extends State<HomePage> {
                       },
                       child: Lottie.asset(
                         'assets/lottie/arrow-down.json',
-                        width: 30,
-                        height: 30,
+                        width: 40,
+                        height: 40,
                       ),
                     )
                   : const SizedBox.shrink()

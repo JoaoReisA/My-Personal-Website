@@ -19,17 +19,12 @@ class BasePage extends StatefulWidget {
 }
 
 class _BasePageState extends State<BasePage> {
-  bool isDarkMode = true;
   final controller = BasePageController();
-  int index = 0;
   String imagePath = ImagesPath.dondaBackground;
   @override
   void initState() {
     super.initState();
     controller.init();
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      // controller.playSong();
-    });
   }
 
   @override
@@ -52,59 +47,61 @@ class _BasePageState extends State<BasePage> {
           centerTitle: true,
           backgroundColor: Colors.transparent,
           elevation: 0,
-          title: StreamBuilder<PlayerState>(
-              //TODO: Maybe add a music queue
-              stream: controller.player.playerStateStream,
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  if (snapshot.data!.playing) {
-                    return Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        IconButton(
-                            onPressed: () async {
-                              await controller.player.pause();
-                            },
-                            icon: const Icon(Icons.pause)),
-                        size.width > 400
-                            ? Text(
-                                Strings.musicTitle,
-                                style: TextStyles.standardTextStyle
-                                    .copyWith(fontSize: 16),
-                              )
-                            : Container(),
-                        const SizedBox(width: 10),
-                        Lottie.asset(
-                          'assets/lottie/music-waves.json',
-                          width: 20,
-                          height: 20,
-                        ),
-                      ],
-                    );
-                  }
-                  return Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      IconButton(
-                          onPressed: () async {
-                            await controller.player.play();
-                          },
-                          icon: const Icon(Icons.play_arrow)),
-                      size.width > 400
-                          ? Text(
-                              Strings.musicTitle,
-                              style: TextStyles.standardTextStyle
-                                  .copyWith(fontSize: 16),
-                            )
-                          : Container(),
-                      const SizedBox(width: 10),
-                      Lottie.asset('assets/lottie/music-waves.json',
-                          width: 20, height: 20, animate: false),
-                    ],
-                  );
-                }
-                return Container();
-              }),
+          title: !controller.isWebMobile
+              ? StreamBuilder<PlayerState>(
+                  //TODO: Maybe add a music queue
+                  stream: controller.player.playerStateStream,
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData) {
+                      if (snapshot.data!.playing) {
+                        return Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            IconButton(
+                                onPressed: () async {
+                                  await controller.player.pause();
+                                },
+                                icon: const Icon(Icons.pause)),
+                            size.width > 400
+                                ? Text(
+                                    Strings.musicTitle,
+                                    style: TextStyles.standardTextStyle
+                                        .copyWith(fontSize: 16),
+                                  )
+                                : Container(),
+                            const SizedBox(width: 10),
+                            Lottie.asset(
+                              'assets/lottie/music-waves.json',
+                              width: 20,
+                              height: 20,
+                            ),
+                          ],
+                        );
+                      }
+                      return Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          IconButton(
+                              onPressed: () async {
+                                await controller.player.play();
+                              },
+                              icon: const Icon(Icons.play_arrow)),
+                          size.width > 400
+                              ? Text(
+                                  Strings.musicTitle,
+                                  style: TextStyles.standardTextStyle
+                                      .copyWith(fontSize: 16),
+                                )
+                              : Container(),
+                          const SizedBox(width: 10),
+                          Lottie.asset('assets/lottie/music-waves.json',
+                              width: 20, height: 20, animate: false),
+                        ],
+                      );
+                    }
+                    return Container();
+                  })
+              : const SizedBox.shrink(),
         ),
         body: const HomePage(),
         persistentFooterButtons: [...iconsList],

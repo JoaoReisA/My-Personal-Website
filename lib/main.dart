@@ -13,8 +13,6 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
-  bool isDarkMode = true;
-
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {

@@ -90,7 +90,7 @@ class _AvatarWidgetState extends State<AvatarWidget> {
                   visible: hoverIsOn,
                   child: IconButton(
                     splashColor: Colors.purple,
-                    color: Colors.deepPurple,
+                    color: Colors.white,
                     icon: const Icon(Icons.drag_indicator),
                     onPressed: () {
                       setState(() {
