@@ -3,24 +3,17 @@ import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:lottie/lottie.dart';
-import 'package:my_personal_website/about_me/pages/about_me_page.dart';
 import 'package:my_personal_website/home/pages/home_page.dart';
-import 'package:my_personal_website/projects/pages/projects_page.dart';
 
 import '../config/images_path.dart';
 import '../config/strings.dart';
 import '../config/text_styles.dart';
 import 'base_page_controller.dart';
 
-class BasePageArguments {
-  final VoidCallback changeDarkMode;
-
-  BasePageArguments(this.changeDarkMode);
-}
-
 class BasePage extends StatefulWidget {
-  const BasePage({Key? key, required this.arguments}) : super(key: key);
-  final BasePageArguments arguments;
+  const BasePage({
+    Key? key,
+  }) : super(key: key);
   @override
   State<BasePage> createState() => _BasePageState();
 }
@@ -113,17 +106,11 @@ class _BasePageState extends State<BasePage> {
                 return Container();
               }),
         ),
-        body: bodyList[index],
+        body: const HomePage(),
         persistentFooterButtons: [...iconsList],
       ),
     );
   }
-
-  List<Widget> get bodyList => [
-        const HomePage(),
-        const ProjectsPage(),
-        const AboutMePage(),
-      ];
 
   List<Widget> get iconsList => [
         Row(
