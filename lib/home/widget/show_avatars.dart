@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:mouse_parallax/mouse_parallax.dart';
 import 'package:my_personal_website/config/images_path.dart';
@@ -15,7 +16,9 @@ class _AvatarWidgetState extends State<AvatarWidget> {
   bool showSelectionBanner = false;
   bool hoverIsEnabled = true;
   PageController pageController = PageController();
-
+  final isWebMobile = kIsWeb &&
+      (defaultTargetPlatform == TargetPlatform.iOS ||
+          defaultTargetPlatform == TargetPlatform.android);
   Color color = Colors.green;
 
   @override
@@ -34,7 +37,7 @@ class _AvatarWidgetState extends State<AvatarWidget> {
             }
           : null,
       child: Padding(
-        padding: const EdgeInsets.only(left: 0),
+        padding: const EdgeInsets.only(),
         child: Row(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
@@ -84,44 +87,46 @@ class _AvatarWidgetState extends State<AvatarWidget> {
                 ],
               ),
             ),
-            Row(
-              children: [
-                Visibility(
-                  visible: hoverIsOn,
-                  child: IconButton(
-                    splashColor: Colors.purple,
-                    color: Colors.white,
-                    icon: const Icon(Icons.drag_indicator),
-                    onPressed: () {
-                      setState(() {
-                        showSelectionBanner = !showSelectionBanner;
-                        hoverIsEnabled = !hoverIsEnabled;
-                      });
-                    },
-                  ),
-                  replacement: Container(width: 40),
-                ),
-                ChangeAvatarConfigs(
-                  showSelectionBanner: showSelectionBanner,
-                  onClickBack: () {
-                    pageController.previousPage(
-                        duration: const Duration(milliseconds: 100),
-                        curve: Curves.easeOut);
-                  },
-                  onClickFoward: () {
-                    pageController.nextPage(
-                        duration: const Duration(milliseconds: 100),
-                        curve: Curves.easeIn);
-                  },
-                  onClickColor: (selectedColor) {
-                    setState(() {
-                      color = selectedColor;
-                    });
-                  },
-                  color: color,
-                )
-              ],
-            ),
+            !isWebMobile
+                ? Row(
+                    children: [
+                      Visibility(
+                        visible: hoverIsOn,
+                        child: IconButton(
+                          splashColor: Colors.purple,
+                          color: Colors.white,
+                          icon: const Icon(Icons.drag_indicator),
+                          onPressed: () {
+                            setState(() {
+                              showSelectionBanner = !showSelectionBanner;
+                              hoverIsEnabled = !hoverIsEnabled;
+                            });
+                          },
+                        ),
+                        replacement: Container(width: 40),
+                      ),
+                      ChangeAvatarConfigs(
+                        showSelectionBanner: showSelectionBanner,
+                        onClickBack: () {
+                          pageController.previousPage(
+                              duration: const Duration(milliseconds: 100),
+                              curve: Curves.easeOut);
+                        },
+                        onClickFoward: () {
+                          pageController.nextPage(
+                              duration: const Duration(milliseconds: 100),
+                              curve: Curves.easeIn);
+                        },
+                        onClickColor: (selectedColor) {
+                          setState(() {
+                            color = selectedColor;
+                          });
+                        },
+                        color: color,
+                      )
+                    ],
+                  )
+                : Container(),
           ],
         ),
       ),
