@@ -14,18 +14,29 @@ class _AboutMePageState extends State<AboutMePage> {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Column(
-        children: [
-          Text("Sobre Mim", style: TextStyles.titleTextStyle),
-          SizedBox(
-              child: Text(
-            Strings.aboutMeDescription,
-            style: TextStyles.standardTextStyle.copyWith(
-              fontSize: 20,
+      child: Container(
+        padding: const EdgeInsets.all(48),
+        decoration: BoxDecoration(
+          color: Colors.black.withAlpha(75),
+          borderRadius: const BorderRadius.all(Radius.circular(16)),
+        ),
+        child: Column(
+          children: [
+            Text(
+              "Sobre Mim",
+              style: TextStyles.titleTextStyle,
+              textAlign: TextAlign.center,
             ),
-            textAlign: TextAlign.center,
-          ))
-        ],
+            SizedBox(
+                child: Text(
+              Strings.aboutMeDescription,
+              style: TextStyles.standardTextStyle.copyWith(
+                fontSize: 20,
+              ),
+              textAlign: TextAlign.center,
+            ))
+          ],
+        ),
       ),
     );
   }
