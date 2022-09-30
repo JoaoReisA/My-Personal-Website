@@ -3,11 +3,12 @@ import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:lottie/lottie.dart';
-import 'package:my_personal_website/home/pages/home_page.dart';
+import 'package:my_personal_website/presenter/home/pages/home_page.dart';
 
-import '../config/images_path.dart';
-import '../config/strings.dart';
-import '../config/text_styles.dart';
+import '../../config/images_path.dart';
+import '../../config/strings.dart';
+import '../../config/text_styles.dart';
+import '../blog/blog_page.dart';
 import 'base_page_controller.dart';
 
 class BasePage extends StatefulWidget {
@@ -102,6 +103,19 @@ class _BasePageState extends State<BasePage> {
                     return Container();
                   })
               : const SizedBox.shrink(),
+          actions: [
+            TextButton(
+                onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const BlogPage(),
+                    )),
+                child: Text(
+                  'Blog',
+                  style: TextStyles.standardTextStyle
+                      .copyWith(fontSize: 16, color: Colors.white),
+                ))
+          ],
         ),
         body: const HomePage(),
         persistentFooterButtons: [...iconsList],

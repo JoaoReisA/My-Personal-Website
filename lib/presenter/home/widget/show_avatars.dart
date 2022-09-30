@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:mouse_parallax/mouse_parallax.dart';
 import 'package:my_personal_website/config/images_path.dart';
-import 'package:my_personal_website/home/widget/change_avatar_configs.dart';
+import 'package:my_personal_website/presenter/home/widget/change_avatar_configs.dart';
 
 class AvatarWidget extends StatefulWidget {
   const AvatarWidget({Key? key}) : super(key: key);

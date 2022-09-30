@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:my_personal_website/about_me/pages/about_me_page.dart';
-import 'package:my_personal_website/base/base_page_controller.dart';
+import 'package:my_personal_website/presenter/about_me/pages/about_me_page.dart';
+import 'package:my_personal_website/presenter/base/base_page_controller.dart';
 
 import '../widget/avatar_group_widget.dart';
 

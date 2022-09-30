@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_personal_website/config/text_styles.dart';
 
-import '../../config/strings.dart';
+import '../../../config/strings.dart';
 
 class AboutMePage extends StatefulWidget {
   const AboutMePage({Key? key}) : super(key: key);

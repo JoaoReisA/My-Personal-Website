@@ -1,9 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:my_personal_website/home/widget/show_avatars.dart';
+import 'package:my_personal_website/presenter/home/widget/show_avatars.dart';
 
-import '../../config/strings.dart';
-import '../../config/text_styles.dart';
+import '../../../config/strings.dart';
+import '../../../config/text_styles.dart';
 
 class AvatarGroupWidget extends StatelessWidget {
   const AvatarGroupWidget({
