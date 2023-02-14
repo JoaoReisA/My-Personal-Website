@@ -1,4 +1,5 @@
 import 'dart:html' as html;
+
 import 'package:flutter/foundation.dart';
 import 'package:just_audio/just_audio.dart';
 
@@ -15,7 +16,7 @@ class BasePageController {
   void init() async {
     if (!isWebMobile) {
       player = AudioPlayer();
-      await player.setAsset('assets/audio/true_love.mp3');
+      await player.setAsset('assets/audio/MF DOOM - Saffron.mp3');
     }
   }
 }

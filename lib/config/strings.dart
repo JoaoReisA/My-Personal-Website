@@ -18,8 +18,8 @@ class Strings {
 Atualmente trabalhando com desenvolvimento mobile usando Flutter e o seu ambiente em volta.
  Tenho uma grande paixão de aprender o máximo sobre tecnologia que eu consigo.
  Atualmente estudando sobre desenvolvimento de apps nativos(swift, kotlin),
- Node JS para backend e também estou lendo O mítico Homem-Mês do Frederick P. Brooks JR.
+ Node JS para backend.
  ''';
 
-  static const musicTitle = "True Love - Kanye West ft XXXTENTACION";
+  static const musicTitle = "MF DOOM - Saffron";
 }
